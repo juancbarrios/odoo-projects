@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+    <record id="wizard_compras" model="ir.ui.view">
+        <field name="name" >Libro de Compras</field>
+        <field name="model">impuestos.wizard.compras</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                    <field name="periodo_compras_inicio"></field>
+                    <field name="periodo_compras_fin"></field>
+                </group>
+                <group>
+                    <field name="excel_true_or_false1"></field>
+                </group>
+                
+                <footer>
+                      <button name='action_report' string='Generar'
+                                class='oe_highlight'
+                                type='object'
+                                 />
+                     
+                      <span class="or_cancel" >
+                                <button special="cancel" string="Cancelar" type="object" class="oe_link oe_inline"/>
+                     </span>
+               </footer>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_ventas" model="ir.ui.view">
+        <field name="name" >Libro de Ventas</field>
+        <field name="model">impuestos.wizard.compras</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                    <field name="periodo_compras_inicio"></field>
+                    <field name="periodo_compras_fin"></field>
+                </group>
+                <group>
+                    <field name="excel_true_or_false1"></field>
+                </group>
+                
+                <footer>
+                      <button name='action_report_ventas' string='Generar'
+                                class='oe_highlight'
+                                type='object'
+                                 />
+                     
+                      <span class="or_cancel" >
+                                <button special="cancel" string="Cancelar" type="object" class="oe_link oe_inline"/>
+                     </span>
+               </footer>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_compras" model="ir.actions.act_window">
+        <field name="name">Libro de Compras</field>
+        <field name="res_model">impuestos.wizard.compras</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_compras"/>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_wizard_ventas" model="ir.actions.act_window">
+        <field name="name">Libro de Ventas</field>
+        <field name="res_model">impuestos.wizard.compras</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_ventas"/>
+        <field name="target">new</field>
+    </record>
+    
+        <menuitem  id="menu_list_taxes"  
+            name="Impuestos"
+            parent="account.menu_finance_reports"/>
+
+            <menuitem id="impuestos_libro_compras" name="Libro de Compras" parent="impuestos1.menu_list_taxes" action="action_wizard_compras"/>
+
+            <menuitem id="impuestos_libro_ventas" name="Libro de Ventas" parent="impuestos1.menu_list_taxes" action="action_wizard_ventas"/>
+            
+  </data>
+</odoo>
